@@ -7,7 +7,17 @@ class PersonalDataSection extends Component {
 
     render(){
         return(
-            <div>personal data</div>
+            <div>
+                <h3>Personal Information</h3>
+                <div>
+                    <input name="name" placeholder="Full Name"></input>
+                    <input name="title" placeholder="Current Position or Title"></input>
+                    <input name="address" placeholder="Address"></input>
+                    <input name="phone" placeholder="Phone Number"></input>
+                    <input name="email" placeholder="Email"></input>
+
+                </div>
+            </div>
         )
     }
 }
