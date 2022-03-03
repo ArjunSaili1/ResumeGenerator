@@ -14,7 +14,7 @@ class ResumeForm extends Component {
                 <form>
                     <PersonalDataSection updatePersonalInfo={this.props.updatePersonalInfo}></PersonalDataSection>
                     <EducationSection addEduInfo={this.props.addEduInfo}></EducationSection>
-                    <ExperienceSection></ExperienceSection>
+                    <ExperienceSection addExpInfo={this.props.addExpInfo}></ExperienceSection>
                 </form>
             </div>
         )
