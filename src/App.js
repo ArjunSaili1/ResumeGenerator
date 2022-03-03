@@ -12,10 +12,11 @@ class App extends Component {
         phone: "",
         email: "",
       },
-      educationInfo:[],
+      educationInfo: {},
       experienceInfo:[]
     }
     this.updatePersonalInfo = this.updatePersonalInfo.bind(this);
+    this.addEduInfo = this.addEduInfo.bind(this);
   }
 
   updatePersonalInfo(e){
@@ -31,10 +32,17 @@ class App extends Component {
     }
   }
 
+  addEduInfo(eduObj){
+    this.setState({
+      educationInfo: {...this.state.educationInfo, ...eduObj}
+    })
+    setTimeout(()=>{console.log(this.state)}, 0)
+  }
+
   render(){
     return (
       <div className="App">
-        <ResumeForm updatePersonalInfo={this.updatePersonalInfo}></ResumeForm>
+        <ResumeForm addEduInfo={this.addEduInfo} updatePersonalInfo={this.updatePersonalInfo}></ResumeForm>
       </div>
     ); 
   }

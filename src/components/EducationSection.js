@@ -27,12 +27,11 @@ class EducationSection extends Component {
                     ...this.state[stateKey],
                     [e.target.name]: e.target.value
                 }
-            })
+            }, ()=>{this.props.addEduInfo(this.state)})
         }
     }
 
     render(){
-        console.log(this.props)
         return(
             <div>
                 <h3>Education</h3>
