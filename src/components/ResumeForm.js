@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import PersonalDataSection from "./PersonalDataSection";
+import EducationSection from "./EducationSection";
+import ExperienceSection from "./ExperienceSection";
 
 class ResumeForm extends Component {
     constructor(props){
@@ -8,7 +11,9 @@ class ResumeForm extends Component {
     render(){
         return(
             <div className="resume-form">
-                hello
+                <PersonalDataSection></PersonalDataSection>
+                <EducationSection></EducationSection>
+                <ExperienceSection></ExperienceSection>
             </div>
         )
     }
