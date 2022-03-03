@@ -11,9 +11,11 @@ class ResumeForm extends Component {
     render(){
         return(
             <div className="resume-form">
-                <PersonalDataSection></PersonalDataSection>
-                <EducationSection></EducationSection>
-                <ExperienceSection></ExperienceSection>
+                <form>
+                    <PersonalDataSection updatePersonalInfo={this.props.updatePersonalInfo}></PersonalDataSection>
+                    <EducationSection></EducationSection>
+                    <ExperienceSection></ExperienceSection>
+                </form>
             </div>
         )
     }

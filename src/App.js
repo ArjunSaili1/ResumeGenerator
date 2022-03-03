@@ -5,21 +5,36 @@ class App extends Component {
   constructor(){
     super();
     this.state = {
-      generalInfo:{
+      personalInfo:{
         name: "",
-        num: "",
-        email: "",
+        title: "",
         address: "",
+        phone: "",
+        email: "",
       },
       educationInfo:[],
       experienceInfo:[]
+    }
+    this.updatePersonalInfo = this.updatePersonalInfo.bind(this);
+  }
+
+  updatePersonalInfo(e){
+    if(e.target.name in this.state.personalInfo){
+      this.setState({
+        personalInfo:{
+          ...this.state.personalInfo,
+          [e.target.name]: e.target.value
+        },
+        ...this.state.educationInfo,
+        ...this.state.experienceInfo
+      })
     }
   }
 
   render(){
     return (
       <div className="App">
-        <ResumeForm></ResumeForm>
+        <ResumeForm updatePersonalInfo={this.updatePersonalInfo}></ResumeForm>
       </div>
     ); 
   }
