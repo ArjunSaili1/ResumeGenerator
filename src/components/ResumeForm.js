@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-import PersonalDataSection from "./PersonalDataSection";
-import EducationSection from "./EducationSection";
-import ExperienceSection from "./ExperienceSection";
+import Section from "./Section";
 import uniqid from "uniqid";
 import '../styles.css'
 
@@ -9,9 +7,9 @@ class ResumeForm extends Component {
     constructor(props){
         super(props)
 
-        this.pdSection = <PersonalDataSection updatePersonalInfo={this.props.updatePersonalInfo}></PersonalDataSection>
-        this.eduSection = <EducationSection addEduInfo={this.props.addEduInfo}></EducationSection>;
-        this.expSection = <ExperienceSection addExpInfo={this.props.addExpInfo}></ExperienceSection>;
+        this.pdSection = <Section sectionType="personal" updatePersonalInfo={this.props.updatePersonalInfo}></Section>
+        this.eduSection = <Section sectionType="education" addEduInfo={this.props.addEduInfo}></Section>;
+        this.expSection = <Section sectionType="experience" addExpInfo={this.props.addExpInfo}></Section>;
 
         this.state = {
             sections: [this.addComponentId(this.pdSection),
@@ -31,7 +29,7 @@ class ResumeForm extends Component {
 
     attachSectionId(){
         this.setState({
-            sections: this.state.sections.map((comp)=>{this.addComponentId(comp)})
+            sections: this.state.sections.map((comp)=>{return this.addComponentId(comp)})
         })
     }
 
