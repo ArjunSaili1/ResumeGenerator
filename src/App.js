@@ -51,7 +51,7 @@ class App extends Component {
   render(){
     return (
       <div className="App">
-        <ResumeForm addExpInfo={this.addExpInfo} addEduInfo={this.addEduInfo} updatePersonalInfo={this.updatePersonalInfo}></ResumeForm>
+        <ResumeForm addExpInfo={this.addExpInfo} addEduInfo={this.addEduInfo} updatePersonalInfo={this.updatePersonalInfo}/>
       </div>
     ); 
   }
