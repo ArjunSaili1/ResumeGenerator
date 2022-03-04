@@ -1,13 +1,11 @@
 import React, { Component } from "react";
-import uniqid from "uniqid";
 
 class EducationSection extends Component {
 
     constructor(props){
         super(props)
-        this.stateKey = uniqid();
         this.state = {
-            [this.stateKey]: {
+            [this.props.sectionID]: {
                 programName: "",
                 schoolName: "",
                 eduFromYear: "",
@@ -20,22 +18,19 @@ class EducationSection extends Component {
 
 
     updateEduInfo(e){
-        const stateKey = this.stateKey
-        if(e.target.name in this.state[stateKey]){
-            this.setState({
-                [stateKey]: {
-                    ...this.state[stateKey],
-                    [e.target.name]: e.target.value
-                }
-            }, ()=>{this.props.addEduInfo(this.state)})
-        }
+        this.setState({
+            [this.props.sectionID]: {
+                ...this.state[this.props.sectionID],
+                [e.target.name]: e.target.value
+            }
+        }, ()=>{this.props.addEduInfo(this.state)})
     }
 
     render(){
         return(
             <div>
-                <h3>Education</h3>
-                <div>
+                <h3 className="section-title">Education</h3>
+                <div className="section-fields">
                     <input type="text" name="programName" placeholder="Program/Field of Study" onChange={this.updateEduInfo}></input>
                     <input type="text" name="schoolName" placeholder="Institution Name" onChange={this.updateEduInfo}></input>
                     <input type="number" name="eduFromYear" placeholder="From" onChange={this.updateEduInfo}></input>

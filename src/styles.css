@@ -1,0 +1,24 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.resume-form{
+    width: 1200px;
+    margin: 20px auto;
+    max-width: calc(100% - 20px);
+    padding: 10px;
+    border: solid black;
+    border-radius: 10px;
+}
+
+.section-fields{
+    margin: 15px 10px 15px 10px;
+}
+
+.section-fields > input{
+    width: 100%;
+    font-size: 15px;
+    padding: 5px;
+    margin: 5px 0px 5px 0px;
+}

@@ -1,21 +1,17 @@
 import React, { Component } from "react";
 
 class PersonalDataSection extends Component {
-    constructor(props){
-        super(props)
-    }
 
     render(){
         return(
             <div>
-                <h3>Personal Information</h3>
-                <div>
-                    <input name="name" placeholder="Full Name" onChange={this.props.updatePersonalInfo}></input>
-                    <input name="title" placeholder="Current Position/Title" onChange={this.props.updatePersonalInfo}></input>
-                    <input name="address" placeholder="Address" onChange={this.props.updatePersonalInfo}></input>
-                    <input name="phone" placeholder="Phone Number" onChange={this.props.updatePersonalInfo}></input>
-                    <input name="email" placeholder="Email" onChange={this.props.updatePersonalInfo}></input>
-
+                <h3 className="section-title">Personal Information</h3>
+                <div className="section-fields">
+                    <input type="text" name="name" placeholder="Full Name" onChange={this.props.updatePersonalInfo}></input>
+                    <input type="text" name="title" placeholder="Current Position/Title" onChange={this.props.updatePersonalInfo}></input>
+                    <input type="text" name="address" placeholder="Address" onChange={this.props.updatePersonalInfo}></input>
+                    <input type="number" name="phone" placeholder="Phone Number" onChange={this.props.updatePersonalInfo}></input>
+                    <input type="text" name="email" placeholder="Email" onChange={this.props.updatePersonalInfo}></input>
                 </div>
             </div>
         )
