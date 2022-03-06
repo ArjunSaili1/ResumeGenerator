@@ -30,7 +30,7 @@ class Section extends Component {
                 [e.target.name]: e.target.value
             }
         }, ()=>{if(this.props.sectionType === "education"){this.props.addEduInfo(this.state)}
-                else{this.props.addExpInfo(this.state)}})
+                if(this.props.sectionType === "experience"){this.props.addExpInfo(this.state)}})
     }
 
     componentDidMount(){

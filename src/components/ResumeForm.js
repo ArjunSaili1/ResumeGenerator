@@ -43,7 +43,7 @@ class ResumeForm extends Component {
         return(
             <div>
                 <div className="resume-form">
-                    {this.addComponentProps(this.pdSection)}
+                    {this.pdSection}
                     {this.state.eduSections.map(section => section)}
                     <CreateSectionButton newEduSection={this.createEduSection}/>
                     {this.state.expSections.map(section => section)}
