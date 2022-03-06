@@ -6,31 +6,57 @@ import ExperienceSection from "./ExperienceSection";
 class Section extends Component {
     constructor(props){
         super(props)
-        this.state = {};
+        this.state = {
+            toField: ""
+        };
         this.renderSection = this.renderSection.bind(this);
         this.updateInfo = this.updateInfo.bind(this);
+        this.setToField = this.setToField.bind(this);
     }
 
     renderSection(){
         if(this.props.sectionType === "personal"){
-            return <PersonalDataSection sectionID={this.props.sectionID} updatePersonalInfo={this.props.updatePersonalInfo}/>
+            return <PersonalDataSection updatePersonalInfo={this.props.updatePersonalInfo}/>
         }
         if(this.props.sectionType === "education"){
-            return <EducationSection sectionID={this.props.sectionID} updateInfo={this.updateInfo}/>
+            return <EducationSection setToField={this.setToField} toField={this.state.toField} updateInfo={this.updateInfo}/>
         }
         if(this.props.sectionType === "experience"){
-            return <ExperienceSection sectionID={this.props.sectionID} updateInfo={this.updateInfo}/>
+            return <ExperienceSection setToField={this.setToField} toField={this.state.toField} updateInfo={this.updateInfo}/>
+        }
+    }
+
+    setToField(e){
+        if(e.target.checked){
+            this.setState({
+                toField: "",
+                [this.props.sectionID]: {
+                    ...this.state[this.props.sectionID],
+                    toYear: "Present"
+                }
+            }, ()=>{if(this.props.sectionType === "education"){this.props.addEduInfo(this.state[this.props.sectionID])}
+            if(this.props.sectionType === "experience"){this.props.addExpInfo(this.state[this.props.sectionID])}})
+        }
+        else{
+            this.setState({
+                toField: <input type="number" name="toYear" placeholder="To" onChange={this.updateInfo}/>,
+                [this.props.sectionID]: {
+                    ...this.state[this.props.sectionID],
+                    toYear: ""
+                }
+             })
         }
     }
 
     updateInfo(e){
         this.setState({
+            ...this.state.toField,
             [this.props.sectionID]: {
                 ...this.state[this.props.sectionID],
                 [e.target.name]: e.target.value
             }
-        }, ()=>{if(this.props.sectionType === "education"){this.props.addEduInfo(this.state)}
-                if(this.props.sectionType === "experience"){this.props.addExpInfo(this.state)}})
+        }, ()=>{if(this.props.sectionType === "education"){this.props.addEduInfo(this.state[this.props.sectionID])}
+                if(this.props.sectionType === "experience"){this.props.addExpInfo(this.state[this.props.sectionID])}})
     }
 
     componentDidMount(){
@@ -39,9 +65,9 @@ class Section extends Component {
                 [this.props.sectionID]: {
                     programName: "",
                     schoolName: "",
-                    eduFromYear: "",
-                    eduToYear: "",
+                    fromYear: "",
                     gpa: "",
+                    toYear: "Present"
                 }
             })
         }
@@ -52,8 +78,8 @@ class Section extends Component {
                     position: "",
                     company: "",
                     expLocation: "",
-                    expFromYear: "",
-                    expToYear: ""
+                    fromYear: "",
+                    toYear: "Present"
                 }
             })
         }
