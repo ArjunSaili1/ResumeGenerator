@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import CreateSectionButton from "./CreateSectionButton";
 import Section from "./Section";
 import uniqid from "uniqid";
 import '../styles.css'
@@ -12,33 +13,42 @@ class ResumeForm extends Component {
         this.expSection = <Section sectionType="experience" addExpInfo={this.props.addExpInfo}></Section>;
 
         this.state = {
-            sections: [this.addComponentId(this.pdSection),
-                this.addComponentId(this.eduSection),
-                this.addComponentId(this.expSection),
-                this.addComponentId(this.expSection)
-            ]
+            eduSections: [this.addComponentProps(this.eduSection)],
+            expSections: [this.addComponentProps(this.expSection)]
         }
-        this.attachSectionId = this.attachSectionId.bind(this);
-        this.addComponentId = this.addComponentId.bind(this)
+        this.addComponentProps = this.addComponentProps.bind(this)
+        this.createEduSection = this.createEduSection.bind(this);
+        this.createExpSection = this.createExpSection.bind(this);
     }
 
-    addComponentId(component){
-        const elementId = uniqid()
-        return React.cloneElement(component, {key: elementId, sectionID: elementId}, null)
-    }
-
-    attachSectionId(){
+    createEduSection(){
         this.setState({
-            sections: this.state.sections.map((comp)=>{return this.addComponentId(comp)})
+            eduSections: [...this.state.eduSections, this.addComponentProps(this.eduSection)]
         })
+    }
+
+    createExpSection(){
+        this.setState({
+            expSections: [...this.state.expSections, this.addComponentProps(this.expSection)]
+        })
+    }
+
+    addComponentProps(component){
+        const elementId = uniqid()
+        return React.cloneElement(component, {newEduSection: this.createEduSection, 
+            newExpSection: this.createExpSection, key: elementId, sectionID: elementId}, null)
     }
 
     render(){
         return(
             <div>
-                <form className="resume-form">
-                    {this.state.sections.map(section => section)}
-                </form>
+                <div className="resume-form">
+                    {this.addComponentProps(this.pdSection)}
+                    {this.state.eduSections.map(section => section)}
+                    <CreateSectionButton newEduSection={this.createEduSection}/>
+                    {this.state.expSections.map(section => section)}
+                    <CreateSectionButton newExpSection={this.createExpSection}/>
+                </div>
             </div>
         )
     }
