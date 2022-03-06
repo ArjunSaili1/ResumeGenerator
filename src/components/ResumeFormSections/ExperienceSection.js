@@ -10,7 +10,11 @@ class ExperienceSection extends Component {
                     <input type="text" name="company" placeholder="Company" onChange={this.props.updateInfo}></input>
                     <input type="text" name="expLocation" placeholder="Location" onChange={this.props.updateInfo}></input>
                     <input type="number" name="expFromYear" placeholder="From" onChange={this.props.updateInfo}></input>
-                    <input type="number" name="expToYear" placeholder="To" onChange={this.props.updateInfo}></input>
+                    {this.props.toField}
+                    <div>
+                        <label htmlFor="present">Present </label>
+                        <input id="present" type="checkbox" name="expToYear" defaultChecked onChange={this.props.setToField}></input>
+                    </div>
                 </div>
             </div>
         )
