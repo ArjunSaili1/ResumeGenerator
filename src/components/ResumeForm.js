@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import CreateSectionButton from "./CreateSectionButton";
-import Section from "./Section";
+import Section from "./ResumeFormSections/Section";
 import uniqid from "uniqid";
 import '../styles.css'
 
