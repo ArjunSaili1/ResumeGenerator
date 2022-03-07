@@ -8,10 +8,10 @@ class CreateSectionButton extends Component {
 
     createButton(){
         if(this.props.newExpSection){
-            return <button className="create-section-button" onClick={this.props.newExpSection}>Add Experience</button>
+            return <button className="create-section-button" onClick={this.props.newExpSection}>Add Entry</button>
         }
         if(this.props.newEduSection){
-            return <button className="create-section-button" onClick={this.props.newEduSection}>Add Education</button>
+            return <button className="create-section-button" onClick={this.props.newEduSection}>Add Entry</button>
         }
     }
 

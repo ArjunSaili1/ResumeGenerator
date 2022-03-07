@@ -87,7 +87,7 @@ class Section extends Component {
 
     render(){
         return(
-            <div>
+            <div className="section-wrapper">
                 {this.renderSection()}
             </div>
         )

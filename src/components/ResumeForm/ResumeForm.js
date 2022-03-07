@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import CreateSectionButton from "./CreateSectionButton";
 import Section from "./ResumeFormSections/Section";
 import uniqid from "uniqid";
-import '../styles.css'
 
 class ResumeForm extends Component {
     constructor(props){
@@ -41,14 +40,12 @@ class ResumeForm extends Component {
 
     render(){
         return(
-            <div className="resume-form-wrapper">
-                <div className="resume-form">
+            <div className="resume-form">
                 {this.pdSection}
                 {this.state.eduSections.map(section => section)}
                 <CreateSectionButton newEduSection={this.createEduSection}/>
                 {this.state.expSections.map(section => section)}
                 <CreateSectionButton newExpSection={this.createExpSection}/>
-            </div>
             </div>
         )
     }
