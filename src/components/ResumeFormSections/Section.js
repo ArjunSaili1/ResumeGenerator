@@ -39,7 +39,7 @@ class Section extends Component {
         }
         else{
             this.setState({
-                toField: <input type="number" name="toYear" placeholder="To" onChange={this.updateInfo}/>,
+                toField: <input  className="section-input" type="number" name="toYear" placeholder="To" onChange={this.updateInfo}/>,
                 [this.props.sectionID]: {
                     ...this.state[this.props.sectionID],
                     toYear: ""

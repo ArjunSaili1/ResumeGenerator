@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ResumeForm from "./components/ResumeForm";
+import 'normalize.css';
 
 class App extends Component {
   constructor(){

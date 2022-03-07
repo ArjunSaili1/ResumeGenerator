@@ -8,7 +8,7 @@ class ResumeForm extends Component {
     constructor(props){
         super(props)
 
-        this.pdSection = <Section sectionType="personal" updatePersonalInfo={this.props.updatePersonalInfo}></Section>
+        this.pdSection = <Section sectionType="personal" updatePersonalInfo={this.props.updatePersonalInfo}/>
         this.eduSection = <Section sectionType="education" addEduInfo={this.props.addEduInfo}></Section>;
         this.expSection = <Section sectionType="experience" addExpInfo={this.props.addExpInfo}></Section>;
 
@@ -41,14 +41,14 @@ class ResumeForm extends Component {
 
     render(){
         return(
-            <div>
+            <div className="resume-form-wrapper">
                 <div className="resume-form">
-                    {this.pdSection}
-                    {this.state.eduSections.map(section => section)}
-                    <CreateSectionButton newEduSection={this.createEduSection}/>
-                    {this.state.expSections.map(section => section)}
-                    <CreateSectionButton newExpSection={this.createExpSection}/>
-                </div>
+                {this.pdSection}
+                {this.state.eduSections.map(section => section)}
+                <CreateSectionButton newEduSection={this.createEduSection}/>
+                {this.state.expSections.map(section => section)}
+                <CreateSectionButton newExpSection={this.createExpSection}/>
+            </div>
             </div>
         )
     }
