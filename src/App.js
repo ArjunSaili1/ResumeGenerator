@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ResumeForm from "./components/ResumeForm/ResumeForm";
 import Header from "./components/Header";
+import ResumePreview from "./components/ResumePreview/ResumePreview";
 import 'normalize.css';
 import './index.css'
 
@@ -54,8 +55,11 @@ class App extends Component {
   render(){
     return (
       <div className="App">
-        <Header></Header>
-        <ResumeForm addExpInfo={this.addExpInfo} addEduInfo={this.addEduInfo} updatePersonalInfo={this.updatePersonalInfo}/>
+        <Header/>
+        <div className="resume-wrapper">
+          <ResumeForm addExpInfo={this.addExpInfo} addEduInfo={this.addEduInfo} updatePersonalInfo={this.updatePersonalInfo}/>
+          <ResumePreview resumeInfo={this.state}/>
+        </div>
       </div>
     ); 
   }
