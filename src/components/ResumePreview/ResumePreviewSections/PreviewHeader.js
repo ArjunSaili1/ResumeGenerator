@@ -5,8 +5,8 @@ class PreviewHeader extends Component{
     render(){
         return(
             <div className="resume-preview-header">
-                {this.props.name}
-                {this.props.title}
+                <h1 className="resume-preview-name">{this.props.name}</h1>
+                <h5 className="resume-preview-title">{this.props.title}</h5>
             </div>
         )
     }

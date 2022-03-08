@@ -35,21 +35,18 @@ class App extends Component {
         ...this.state.experienceInfo
       })
     }
-    setTimeout(()=>{console.log(this.state)}, 0)
   }
 
   addEduInfo(eduObj){
     this.setState({
       educationInfo: {...this.state.educationInfo, ...eduObj}
     })
-    setTimeout(()=>{console.log(this.state)}, 0)
   }
 
   addExpInfo(expObj){
     this.setState({
       experienceInfo: {...this.state.experienceInfo, ...expObj}
     })
-    setTimeout(()=>{console.log(this.state)}, 0)
   }
 
   render(){
