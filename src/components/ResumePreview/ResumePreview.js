@@ -14,8 +14,7 @@ class ResumePreview extends Component {
         return(
             <div className="resume-preview">
                 <PreviewHeader name={name} title={title}/>
-                <div lassName="resume-preview-main">
-
+                <div className="resume-preview-main">
                 </div>
                 <PreviewSidebar address={address} phone={phone} email={email}/>
             </div>
