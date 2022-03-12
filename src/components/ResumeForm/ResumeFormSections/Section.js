@@ -55,8 +55,11 @@ class Section extends Component {
                 ...this.state[this.props.sectionID],
                 [e.target.name]: e.target.value
             }
-        }, ()=>{if(this.props.sectionType === "education"){this.props.addEduInfo(this.state[this.props.sectionID])}
-                if(this.props.sectionType === "experience"){this.props.addExpInfo(this.state[this.props.sectionID])}})
+        }, ()=>{
+            console.log(this.state[this.props.sectionID])
+            if(this.props.sectionType === "education"){this.props.addEduInfo({[this.props.sectionID]: this.state[this.props.sectionID]})}
+                if(this.props.sectionType === "experience"){this.props.addExpInfo({[this.props.sectionID]: this.state[this.props.sectionID]})}
+            })
     }
 
     componentDidMount(){
