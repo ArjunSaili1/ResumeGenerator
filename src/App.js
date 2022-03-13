@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import ResumeForm from "./components/ResumeForm/ResumeForm";
+import ResumeForm from "./components/ResumeForm/ResumeForm"
 import Header from "./components/Header";
 import ResumePreview from "./components/ResumePreview/ResumePreview";
 import 'normalize.css';
