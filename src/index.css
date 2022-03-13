@@ -126,7 +126,7 @@ body{
 }
 
 .resume-preview-main{
-    padding: 2% 2% 2% 5%;
+    padding: 5% 2% 2% 5%;
     width: 100%;
     background-color: rgb(235, 223, 193);
 }
@@ -152,4 +152,28 @@ body{
 
 .sidebar-title{
     margin: 0 0 25px 0;
+}
+
+.preview-section{
+    margin: 2%
+}
+
+.preview-section-fields{
+    padding: 2% 0;
+    margin-bottom: 5%;
+    display: grid;
+    gap: 5%;
+    grid-template-columns: 20% 80%;
+    grid-template-areas: "date info";
+}
+
+.date-fields{
+    margin: 0;
+    grid-area: date;
+}
+
+
+.info-fields > *{
+    grid-area: info;
+    margin: 0 0 2% 0;
 }
