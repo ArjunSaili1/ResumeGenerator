@@ -1,100 +1,72 @@
-import React, { Component } from "react";
+import React, { useEffect, useState } from "react";
 import PersonalDataSection from "./PersonalDataSection";
 import EducationSection from "./EducationSection";
 import ExperienceSection from "./ExperienceSection";
 
-class Section extends Component {
-    constructor(props){
-        super(props)
-        this.state = {
-            toField: ""
-        };
-        this.renderSection = this.renderSection.bind(this);
-        this.updateInfo = this.updateInfo.bind(this);
-        this.setToField = this.setToField.bind(this);
+const Section = (props) => {
+    const [toField, setToField] = useState("");
+    const [sectionObj, setSectionObj] = useState({[props.sectionId]:{}})
+
+    function updateInfo(e){
+        setSectionObj({
+            [props.sectionId]: {
+                ...sectionObj[props.sectionId],
+                [e.target.name]: e.target.value
+            } 
+        })
+        setTimeout(()=>{console.log(sectionObj)},0)
+
     }
 
-    renderSection(){
-        if(this.props.sectionType === "personal"){
-            return <PersonalDataSection updatePersonalInfo={this.props.updatePersonalInfo}/>
+    function renderSection(){
+        if(props.sectionType === "personal"){
+            return <PersonalDataSection updatePersonalInfo={props.updatePersonalInfo}/>
         }
-        if(this.props.sectionType === "education"){
-            return <EducationSection setToField={this.setToField} toField={this.state.toField} updateInfo={this.updateInfo}/>
+        if(props.sectionType === "education"){
+            return <EducationSection updateToField={updateToField} toField={toField} updateInfo={updateInfo}/>
         }
-        if(this.props.sectionType === "experience"){
-            return <ExperienceSection setToField={this.setToField} toField={this.state.toField} updateInfo={this.updateInfo}/>
+        if(props.sectionType === "experience"){
+            return <ExperienceSection updateToField={updateToField} toField={toField} updateInfo={updateInfo}/>
         }
     }
 
-    setToField(e){
+    useEffect(()=>{
+        if(props.sectionType === "education"){
+            props.addEduInfo(sectionObj);
+        }
+        if(props.sectionType === "experience"){
+            props.addExpInfo(sectionObj);
+        }
+
+    }, [sectionObj, props])
+
+    function updateToField(e){
         if(e.target.checked){
-            this.setState({
-                toField: "",
-                [this.props.sectionID]: {
-                    ...this.state[this.props.sectionID],
+            setToField("");
+            setSectionObj({
+                [props.sectionId]:{
+                    ...sectionObj[props.sectionId],
                     toYear: "Present"
                 }
-            }, ()=>{if(this.props.sectionType === "education"){this.props.addEduInfo(this.state[this.props.sectionID])}
-            if(this.props.sectionType === "experience"){this.props.addExpInfo(this.state[this.props.sectionID])}})
+            })
         }
         else{
-            this.setState({
-                toField: <input  className="section-input" type="number" name="toYear" placeholder="To" onChange={this.updateInfo}/>,
-                [this.props.sectionID]: {
-                    ...this.state[this.props.sectionID],
+            setToField(<input  className="section-input" type="number" name="toYear" placeholder="To" onChange={updateInfo}/>);
+            setSectionObj({
+                [props.sectionId]:{
+                    ...sectionObj[props.sectionId],
                     toYear: ""
                 }
-             })
-        }
-    }
-
-    updateInfo(e){
-        this.setState({
-            ...this.state.toField,
-            [this.props.sectionID]: {
-                ...this.state[this.props.sectionID],
-                [e.target.name]: e.target.value
-            }
-        }, ()=>{
-            console.log(this.state[this.props.sectionID])
-            if(this.props.sectionType === "education"){this.props.addEduInfo({[this.props.sectionID]: this.state[this.props.sectionID]})}
-                if(this.props.sectionType === "experience"){this.props.addExpInfo({[this.props.sectionID]: this.state[this.props.sectionID]})}
-            })
-    }
-
-    componentDidMount(){
-        if(this.props.sectionType === "education"){
-            this.setState({
-                [this.props.sectionID]: {
-                    programName: "",
-                    schoolName: "",
-                    fromYear: "",
-                    gpa: "",
-                    toYear: "Present"
-                }
-            })
-        }
-
-        if(this.props.sectionType === "experience"){
-            this.setState({
-                [this.props.sectionID]: {
-                    position: "",
-                    company: "",
-                    expLocation: "",
-                    fromYear: "",
-                    toYear: "Present"
-                }
             })
         }
     }
 
-    render(){
-        return(
-            <div className="section-wrapper">
-                {this.renderSection()}
-            </div>
-        )
-    }
+    return(
+        <div className="section-wrapper">
+            {renderSection()}
+        </div>
+    )
+
 }
 
 export default Section

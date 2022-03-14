@@ -1,54 +1,40 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import CreateSectionButton from "./CreateSectionButton";
 import Section from "./ResumeFormSections/Section";
 import uniqid from "uniqid";
 
-class ResumeForm extends Component {
-    constructor(props){
-        super(props)
+const ResumeForm = (props) => {
+    const pdSection = <Section sectionType="personal" updatePersonalInfo={props.updatePersonalInfo}/>
+    const eduSection = <Section sectionType="education" addEduInfo={props.addEduInfo}></Section>;
+    const expSection = <Section sectionType="experience" addExpInfo={props.addExpInfo}></Section>;
 
-        this.pdSection = <Section sectionType="personal" updatePersonalInfo={this.props.updatePersonalInfo}/>
-        this.eduSection = <Section sectionType="education" addEduInfo={this.props.addEduInfo}></Section>;
-        this.expSection = <Section sectionType="experience" addExpInfo={this.props.addExpInfo}></Section>;
+    const [eduSections, setEduSection] = useState([addComponentProps(eduSection)])
+    const [expSections, setExpSection] = useState([addComponentProps(expSection)])
 
-        this.state = {
-            eduSections: [this.addComponentProps(this.eduSection)],
-            expSections: [this.addComponentProps(this.expSection)]
-        }
-        this.addComponentProps = this.addComponentProps.bind(this)
-        this.createEduSection = this.createEduSection.bind(this);
-        this.createExpSection = this.createExpSection.bind(this);
+
+    function addComponentProps(component){
+        const elementId = uniqid();
+        return React.cloneElement(component, {newEduSection: createEduSection, 
+            newExpSection: createExpSection, key: elementId, sectionId: elementId}, null)
     }
 
-    createEduSection(){
-        this.setState({
-            eduSections: [...this.state.eduSections, this.addComponentProps(this.eduSection)]
-        })
+    function createEduSection(){
+        setEduSection([...eduSections, addComponentProps(eduSection)])
     }
 
-    createExpSection(){
-        this.setState({
-            expSections: [...this.state.expSections, this.addComponentProps(this.expSection)]
-        })
+    function createExpSection(){
+        setExpSection([...expSections, addComponentProps(expSection)])
     }
 
-    addComponentProps(component){
-        const elementId = uniqid()
-        return React.cloneElement(component, {newEduSection: this.createEduSection, 
-            newExpSection: this.createExpSection, key: elementId, sectionID: elementId}, null)
-    }
-
-    render(){
-        return(
-            <div className="resume-form">
-                {this.pdSection}
-                {this.state.eduSections.map(section => section)}
-                <CreateSectionButton newEduSection={this.createEduSection}/>
-                {this.state.expSections.map(section => section)}
-                <CreateSectionButton newExpSection={this.createExpSection}/>
-            </div>
-        )
-    }
+    return(
+        <div className="resume-form">
+            {pdSection}
+            {eduSections.map(section => section)}
+            <CreateSectionButton newEduSection={createEduSection}/>
+            {expSections.map(section => section)}
+            <CreateSectionButton newExpSection={createExpSection}/>
+        </div>
+    )
 }
 
 export default ResumeForm
