@@ -26,8 +26,8 @@ const App = () => {
           ...resumeInfo.personalInfo,
           [e.target.name]: e.target.value
         },
-        ...resumeInfo.educationInfo,
-        ...resumeInfo.experienceInfo
+        educationInfo: {...resumeInfo.educationInfo},
+        experienceInfo: {...resumeInfo.experienceInfo}
       })
     }
   }
