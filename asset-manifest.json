@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/%7BResumeGenerator%7D/static/css/main.9ef33c14.css",
-    "main.js": "/%7BResumeGenerator%7D/static/js/main.83b8454c.js",
-    "index.html": "/%7BResumeGenerator%7D/index.html",
-    "main.9ef33c14.css.map": "/%7BResumeGenerator%7D/static/css/main.9ef33c14.css.map",
-    "main.83b8454c.js.map": "/%7BResumeGenerator%7D/static/js/main.83b8454c.js.map"
+    "main.css": "/ResumeGenerator/static/css/main.9ef33c14.css",
+    "main.js": "/ResumeGenerator/static/js/main.83b8454c.js",
+    "index.html": "/ResumeGenerator/index.html",
+    "main.9ef33c14.css.map": "/ResumeGenerator/static/css/main.9ef33c14.css.map",
+    "main.83b8454c.js.map": "/ResumeGenerator/static/js/main.83b8454c.js.map"
   },
   "entrypoints": [
     "static/css/main.9ef33c14.css",
