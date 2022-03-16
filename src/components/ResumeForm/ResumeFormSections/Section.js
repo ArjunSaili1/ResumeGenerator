@@ -14,8 +14,6 @@ const Section = (props) => {
                 [e.target.name]: e.target.value
             } 
         })
-        setTimeout(()=>{console.log(sectionObj)},0)
-
     }
 
     function renderSection(){

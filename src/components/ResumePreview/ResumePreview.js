@@ -6,7 +6,6 @@ import ExpSectionPreview from "./ResumePreviewSections/ExpSectionPreview"
 
 const ResumePreview = (props) => {
     const {personalInfo, experienceInfo, educationInfo} = props.resumeInfo;
-    console.log(props.resumeInfo)
     const {name, title, address, phone, email} = personalInfo
 
     return(
