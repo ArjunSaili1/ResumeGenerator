@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/ArjunSaili1/ResumeGenerator/static/css/main.9ef33c14.css",
+    "main.js": "/ArjunSaili1/ResumeGenerator/static/js/main.83b8454c.js",
+    "index.html": "/ArjunSaili1/ResumeGenerator/index.html",
+    "main.9ef33c14.css.map": "/ArjunSaili1/ResumeGenerator/static/css/main.9ef33c14.css.map",
+    "main.83b8454c.js.map": "/ArjunSaili1/ResumeGenerator/static/js/main.83b8454c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9ef33c14.css",
+    "static/js/main.83b8454c.js"
+  ]
+}
